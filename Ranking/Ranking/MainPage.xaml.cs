@@ -60,11 +60,11 @@ namespace Ranking
         {
             InitializeComponent();
 
-            url = "https://app.rakuten.co.jp/services/api/BooksBook/Search/20170404?format=json&formatVersion=2&applicationId=429a5ae73c1ae242773263f90aeec416&sort=sales&hits=5"; //formatVersion=2にした
+            url = "https://app.rakuten.co.jp/services/api/BooksBook/Search/20170404?format=json&formatVersion=2&applicationId=1051637750796067320&sort=sales&hits=5"; //formatVersion=2にした
 
             var layout = new StackLayout { HorizontalOptions = LayoutOptions.CenterAndExpand, VerticalOptions = LayoutOptions.CenterAndExpand };
 
-            genre = new Entry    //EntryでISBNコードを入力
+            genre = new Entry    //Entryでgenreコードを入力
             {
                 Placeholder = "GenreIdを入力",
                 PlaceholderColor = Color.Gray,
@@ -73,10 +73,7 @@ namespace Ranking
             };
             layout.Children.Add(genre);
 
-            //実行url https://app.rakuten.co.jp/services/api/BooksBook/Search/20170404?format=json&applicationId=1051637750796067320&formatVersion=2&isbn=9784838729036
-
-            //ランキング実行url https://app.rakuten.co.jp/services/api/BooksBook/Search/20170404?format=json&booksGenreId=001&formatVersion=2&sort=sales&hits=5&applicationId=429a5ae73c1ae242773263f90aeec416
-
+            //ランキング実行url https://app.rakuten.co.jp/services/api/BooksBook/Search/20170404?format=json&booksGenreId=001&formatVersion=2&sort=sales&hits=30&applicationId=1051637750796067320
             var Serch = new Button
             {
                 WidthRequest = 60,
@@ -88,16 +85,6 @@ namespace Ranking
 
             Content = layout;
         }
-
-        /*
-        private void isbn_KeyPress(object sender, EventArgs e)
-        {
-            if(e.KeyChar < '0' || '9' < e.KeyChar)
-            {
-                e.Handled = true;
-            }
-        }
-        */
 
         //--------------------------------Serchボタンイベントハンドラ-----------------------------------
         private async void Serch_Click(object sender, EventArgs e)
@@ -111,7 +98,7 @@ namespace Ranking
                 scroll.Content = layout;
 
                 string genreId = genre.Text;
-                requestUrl = url + "booksGenreId=" + genreId; //URLにISBNコードを挿入
+                requestUrl = url + "booksGenreId=001" + genreId; //URLにISBNコードを挿入
 
                 //------------------------------ボタン再配置--------------------------
                 genre = new Entry    //EntryでISBNコードを入力
@@ -178,7 +165,6 @@ namespace Ranking
                     layout.Children.Add(new Label { Text = $"titleKana: { titleKana }" });
                     layout.Children.Add(new Label { Text = $"itemCaption: { itemCaption }" });
                     layout.Children.Add(new Image { Source = gazo });
-                    layout.Children.Add(new Image { Source = "https://i.imgur.com/jgspwwq.jpg" });
                     String A = gazo;
 
                 };
