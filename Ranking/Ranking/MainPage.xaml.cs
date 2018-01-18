@@ -181,6 +181,7 @@ namespace Ranking
             catch (Exception x) { await DisplayAlert("警告", x.ToString(), "OK"); }
         }
 
+
         //HTTPアクセスメソッド
         public static async Task<string> GetApiAsync()
         {
