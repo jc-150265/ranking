@@ -60,7 +60,7 @@ namespace Ranking
         {
             InitializeComponent();
 
-            url = "https://app.rakuten.co.jp/services/api/BooksBook/Search/20170404?format=json&formatVersion=2&applicationId=1051637750796067320&sort=sales&hits=5"; //formatVersion=2にした
+            url = "https://app.rakuten.co.jp/services/api/BooksBook/Search/20170404?format=json&formatVersion=2&applicationId=1051637750796067320&sort=sales&hits=30"; //formatVersion=2にした
 
             var layout = new StackLayout { HorizontalOptions = LayoutOptions.CenterAndExpand, VerticalOptions = LayoutOptions.CenterAndExpand };
 
@@ -73,7 +73,8 @@ namespace Ranking
             };
             layout.Children.Add(genre);
 
-            //ランキング実行url https://app.rakuten.co.jp/services/api/BooksBook/Search/20170404?format=json&booksGenreId=001&formatVersion=2&sort=sales&hits=30&applicationId=1051637750796067320
+            //ランキング実行url https://app.rakuten.co.jp/services/api/BooksBook/Search/20170404?format=json&formatVersion=2&sort=sales&hits=30&applicationId=1051637750796067320&booksGenreId=001
+
             var Serch = new Button
             {
                 WidthRequest = 60,
@@ -98,7 +99,7 @@ namespace Ranking
                 scroll.Content = layout;
 
                 string genreId = genre.Text;
-                requestUrl = url + "booksGenreId=001" + genreId; //URLにISBNコードを挿入
+                requestUrl = url + "&booksGenreId=001" + genreId; //URLにISBNコードを挿入
 
                 //------------------------------ボタン再配置--------------------------
                 genre = new Entry    //EntryでISBNコードを入力
